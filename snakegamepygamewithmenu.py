@@ -2,7 +2,6 @@ import tkinter
 from tkinter import *
 import sys
 import os
-import pickle
 
 win=tkinter.Tk()
 win.title('Snake Game')
@@ -20,9 +19,9 @@ btn.pack(pady=30)
 btn2.pack(pady=20)
 
 label2=Label(win,text='High Score:')
-with open('score.dat','rb') as file:
+with open('score.txt','r') as file:
   var=StringVar()
-  var=pickle.load(file)
+  var=file.read()
   label3=Label(win,text='High Score:'+str(var),relief=FLAT)
   label3.pack()
 win.mainloop()
