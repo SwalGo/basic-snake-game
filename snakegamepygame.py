@@ -2,7 +2,6 @@ import pygame
 import time
 import random
 from pygame import mixer
-import pickle
 #Initialization of the library pygame
 pygame.init() 
 #initizalization of pygame's sound library
@@ -144,11 +143,11 @@ while True:
             game_over()
     #dispalying score
     show_score(1,white,'sans',20)
-    with open('score.dat','rb') as file:
-        v=pickle.load(file)
-        if(score>v):
-         with open('score.dat','wb') as file:
-          pickle.dump(score,file)
+    with open('score.txt','r') as file:
+        v=file.read()
+        if(score>int(v)):
+         with open('score.txt','w') as file:
+          file.write(str(score))
     # refreshs game screen
     pygame.display.update()
     #fps
